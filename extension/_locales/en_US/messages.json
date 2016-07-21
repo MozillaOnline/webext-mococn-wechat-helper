@@ -1,0 +1,11 @@
+{
+  "browserActionTitle": {
+    "message": "Open Web WeChat"
+  },
+  "extensionDescription": {
+    "message": "Access Web WeChat by one click"
+  },
+  "extensionName": {
+    "message": "WeChat Helper by MoCoCN"
+  }
+}

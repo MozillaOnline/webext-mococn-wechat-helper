@@ -1,0 +1,11 @@
+{
+  "browserActionTitle": {
+    "message": "打开微信网页版"
+  },
+  "extensionDescription": {
+    "message": "一键打开微信网页版，同时在微信有新消息时给出及时的消息提醒"
+  },
+  "extensionName": {
+    "message": "微信网页版助手"
+  }
+}
