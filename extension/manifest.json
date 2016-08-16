@@ -3,7 +3,7 @@
     "gecko": {
       "id": "wx-assistant@mozillaonline.com",
       "strict_min_version": "45.0",
-      "update_url": "https://g-fox.cn/chinaedition/addons/updates.json"
+      "update_url": "https://addons.firefox.com.cn/chinaedition/addons/updates.json"
     }
   },
   "background": {
@@ -34,5 +34,5 @@
   },
   "manifest_version": 2,
   "name": "__MSG_extensionName__",
-  "version": "2.0"
+  "version": "2.0.1"
 }
