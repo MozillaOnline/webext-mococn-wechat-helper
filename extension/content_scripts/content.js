@@ -17,7 +17,7 @@ let statusObserver = new MutationObserver(function(mutations) {
   mutations.forEach(function(mutation) {
     if (mutation.type !== "attributes" ||
         mutation.attributeName !== attributeName) {
-      return;      
+      return;
     }
     reportStatus(mutation.target.getAttribute(mutation.attributeName));
   });
@@ -29,7 +29,7 @@ let statusObserverConfig = {
 let titleObserver = new MutationObserver(function(mutations) {
   mutations.forEach(function(mutation) {
     if (mutation.type !== "childList") {
-      return;      
+      return;
     }
     let unreadCount = /\((\d+)\)$/.exec(mutation.target.textContent);
     if (unreadCount) {
@@ -56,14 +56,14 @@ function init() {
     });
     port.disconnect();
     port = undefined;
-  }, false);
+  });
 }
 
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", function(evt) {
     // console.log("init after got DOMContentLoaded event");
     init();
-  }, false);
+  });
 } else {
   // console.log("init as already interactive or later");
   init();

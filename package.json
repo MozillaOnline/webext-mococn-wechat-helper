@@ -1,0 +1,16 @@
+{
+  "name": "webext-mococn-wechat-helper",
+  "version": "2.0.2",
+  "description": "WeChat Helper by MoCoCN",
+  "scripts": {
+    "lint": "eslint extension"
+  },
+  "author": "Mozilla Online Limited",
+  "license": "MPL-2.0",
+  "repository": "MozillaOnline/webext-mococn-wechat-helper",
+  "devDependencies": {
+    "eslint": "3.19.0",
+    "eslint-plugin-mozilla": "0.4.2",
+    "eslint-plugin-no-unsanitized": "2.0.1"
+  }
+}
