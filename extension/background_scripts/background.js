@@ -68,6 +68,36 @@ function handleTabActivated(activeInfo) {
   });
 }
 
+function handleWRHeadersReceived(details) {
+  return {
+    responseHeaders: contentDispositionHack(details.responseHeaders)
+  };
+}
+
+function contentDispositionHack(headers) {
+  for (let header of headers) {
+    if (header.name.toLowerCase() !== "content-disposition") {
+      continue;
+    }
+
+    let parts = header.value.split(/;\s*/);
+    if (parts.length !== 2 ||
+        parts[0] !== "attachment" ||
+        !parts[1].startsWith("filename=%")) {
+      continue;
+    }
+
+    let filename = parts[1].split("=")[1];
+    try {
+      decodeURIComponent(filename);
+      parts.push(`filename*=UTF-8''${filename}`);
+      header.value = parts.join("; ");
+    } catch (ex) {}
+  }
+
+  return headers;
+}
+
 function setupWeChatPort(port) {
   wechatPort = port;
   wechatTabId = port.sender.tab.id;
@@ -97,4 +127,7 @@ function switchToWeChatTab(callback) {
 chrome.browserAction.onClicked.addListener(handleBrowserActionClick);
 chrome.runtime.onConnect.addListener(handleRuntimeConnect);
 chrome.tabs.onActivated.addListener(handleTabActivated);
+chrome.webRequest.onHeadersReceived.addListener(handleWRHeadersReceived,
+  { urls: ["https://file.wx.qq.com/*"], types: ["main_frame"] },
+  ["blocking", "responseHeaders"]);
 // console.log("background.js loaded");
